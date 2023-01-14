@@ -1,6 +1,6 @@
 # Credit Risk Analysis
 
- In recent years, finance has used machine learning to predict credit risk more accurately. Credit approval generally relied on information such as income, credit scores, home ownership, etc., to decide if a loan would get approved.  Banks and lenders have looked into other ways of analyzing information because of the inherent risk that borrowers might not be able to repay their loans. Machine learning provides more accuracy to credit risk modeling by learning from multiple data and predicting an outcome. 
+ In recent years, finance has used machine learning to predict credit risk more accurately. Credit approval generally relied on information such as income, credit scores, home ownership, etc., to decide whether as loan would get approved.  Banks and lenders have looked into other ways of analyzing information because of the inherent risk that borrowers might not be able to repay their loans. Machine learning provides more accuracy to credit risk modeling by learning from multiple data and predicting an outcome. 
 
 
 ## Project Overview
@@ -27,7 +27,7 @@ Before building the machine learning models, I had to preprocess the dataset by 
 The models will be predicting *low-risk* and *high-risk* credit, therefore our target variable is ```loan_status```. In this dataset, the majority class is *low-risk credit* and the minority class is *high-risk credit*. I separated the target and features variables by assigning ```y``` to  “loan_status”, and ```X``` to all other features in the dataset.  
 ![Image_name](Resources/target_variables.png)
 
- Using the function ```train_test_split()```, I split the data into training and testing. If we don’t specify, the split percentage the function will split the data into a training set of 75%, and a testing set of 25%. Once we train our model with the training data, we can test it with the rest of the data to observe the model’s accuracy. We can also scale the data so that data points are closer to each other. The following image shows the code used to split and scale the data. 
+ Using the function ```train_test_split()```, I split the data into training and testing. If we don’t specify the split percentage, the function will split the data into a training set of 75%, and a testing set of 25%. Once we train our model with the training data, we can test it with the rest of the data to observe the model’s accuracy. We can also scale the data so that data points are closer to each other. The following image shows the code used to split and scale the data. 
 
 ![Image_name](Resources/data_split.png)
 
@@ -71,7 +71,7 @@ SMOTE also oversamples the minority class by taking samples from the nearest nei
 
 ![Image_name](Resources/smote_oversampling.png)
 
-After applying logistic regression to the resample data, I generated a confusion matrix. This matrix shows that this model is not good at predicting credit risk either.
+After applying logistic regression to the resampled data, I generated a confusion matrix. This matrix shows that this model is not good at predicting credit risk either.
 
 ![Image_name](Resources/confusion_matrix_smote.png)
 
@@ -114,6 +114,7 @@ Also, most metrics are similar to Random Oversampler, and the geometric mean is 
 
 ![Image_name](Resources/imbalanced_report_smoteenn.png)
 
+### Ensemble Learners
 
 - Balanced Random Forest Classifier
 
@@ -133,7 +134,7 @@ The balanced accuracy score of this model is  ```0.7871246640962729```. This sco
 
 **Features of Importance**
 
-Random forests allow you to rank features by their relevance. The ```feature_importances_``` function allows you to understand the relationship between the features and the target variable so that the model can be improved by removing irrelevant variables; thus, the [features of importance](https://towardsdatascience.com/understanding-feature-importance-and-how-to-implement-it-in-python-ff0287b20285) allow you to simplify the mode. 
+Random forests allow you to rank features by their relevance. The ```feature_importances_``` function allows you to understand the relationship between the features and the target variable so that the model can be improved by removing irrelevant variables; thus, the [features of importance](https://towardsdatascience.com/understanding-feature-importance-and-how-to-implement-it-in-python-ff0287b20285) allow you to simplify the model. 
 
 The five main features of importance for the balanced random forest classification model are shown in the following images. The first contributing feature is ```total_rec_prncp```, which refers to the *principal received to date*. 
 
@@ -149,7 +150,7 @@ We can see that the training and testing score are similar in the Easy Ensemble 
 
 ![Image_name](Resources/easy_ensemble_adaboost.png)
 
-The confusion matrix shows that this model is doing well at predicting *high-risk* credit. The model shows only a few false negatives; therefore, recall is high for the minority class. However, the confusion matrix shows that we have several false positives, thus precision is 0.07 for the minority class.
+The confusion matrix shows that this model is doing well at predicting *high-risk* credit. The model shows only a few false negatives; therefore, recall is high for the minority class. However, the confusion matrix shows that we have several false positives, thus the precision is 0.07 for the minority class.
 
 ![Image_name](Resources/confusion_matrix_adaboost.png)
 
